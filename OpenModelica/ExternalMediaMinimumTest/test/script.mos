@@ -1,0 +1,9 @@
+
+loadModel(ExternalMediaMinimumTest);
+getErrorString();
+
+simulate(ExternalMediaMinimumTest.Test.TestConstants);
+getErrorString();
+
+plot({Tc});
+getErrorString();
