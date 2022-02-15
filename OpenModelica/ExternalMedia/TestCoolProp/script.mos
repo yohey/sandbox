@@ -1,0 +1,13 @@
+loadModel(Modelica, {"3.2.3"});
+loadModel(ExternalMedia);
+
+loadFile("TestCoolProp.mo");
+
+setLinkerFlags("-L/opt/homebrew/opt/openblas/lib");
+
+// checkModel(TestCoolProp.TestHydrogen);
+// buildModel(TestCoolProp.TestHydrogen);
+simulate(TestCoolProp.TestHydrogen);
+plot({s, h});
+
+getErrorString();
