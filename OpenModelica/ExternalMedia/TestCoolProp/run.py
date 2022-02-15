@@ -12,17 +12,14 @@ def test_externalmedia(ax, T, p, pLabels):
                                                   os.path.join(os.environ['OPENMODELICAHOME'], 'lib/omlibrary'),
                                                   os.path.join(os.environ['HOME'], '.openmodelica/libraries')])
 
-    import io, sys
     from OMPython import ModelicaSystem
 
-    with io.StringIO() as fp:
-        stdout0 = sys.stdout
-        sys.stdout = fp
-        mod = ModelicaSystem('TestCoolProp.mo', 'TestCoolProp.TestHydrogen', [('Modelica', '3.2.3'), 'ExternalMedia'])
-        log = fp.getvalue()
-        sys.stdout = stdout0
+    mod = ModelicaSystem('TestCoolProp.mo', 'TestCoolProp.TestHydrogen', [('Modelica', '3.2.3'), 'ExternalMedia'])
 
-    if len(log) > 0:
+    with open(mod.modelName + '.log', 'r') as fp:
+        log = fp.read()
+
+    if 'library not found for -lopenblas' in log:
         mod.sendExpression('setLinkerFlags("-L/opt/homebrew/opt/openblas/lib")')
         mod.buildModel()
 
