@@ -63,7 +63,7 @@ if __name__ == '__main__':
     ax.set_xlabel('Entropy    s    [kJ/(kg*K)]')
     ax.set_ylabel('Enthalpy    h    [kJ/kg]')
     ax.legend()
-    ax.set_title('Test (OpenModelica + ExternalMedia)')
+    ax.set_title('Hydrogen h-s diagram\n(OMPython + OpenModelica + ExternalMedia + CoolProp)')
     # fig.savefig("img-ExternalMedia-02.png")
     plt.show()
 
@@ -72,6 +72,6 @@ if __name__ == '__main__':
     ax.set_xlabel('Entropy    s    [kJ/(kg*K)]')
     ax.set_ylabel('Enthalpy    h    [kJ/kg]')
     ax.legend()
-    ax.set_title('Test (Python + CoolProp)')
+    ax.set_title('Hydrogen h-s diagram (Python + CoolProp)')
     # fig.savefig("img-ExternalMedia-03.png")
     plt.show()
