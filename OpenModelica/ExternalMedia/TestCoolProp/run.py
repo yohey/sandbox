@@ -20,7 +20,7 @@ def test_externalmedia(ax, T, p, pLabels):
         log = fp.read()
 
     if 'library not found for -lopenblas' in log:
-        mod.sendExpression('setLinkerFlags("-L/opt/homebrew/opt/openblas/lib")')
+        mod.sendExpression(f'setLinkerFlags("-L{HOMEBREW_PREFIX}/opt/openblas/lib")')
         mod.buildModel()
 
     N = len(T) - 1
@@ -64,6 +64,7 @@ if __name__ == '__main__':
     ax.set_ylabel('Enthalpy    h    [kJ/kg]')
     ax.legend()
     ax.set_title('Test (OpenModelica + ExternalMedia)')
+    # fig.savefig("img-ExternalMedia-02.png")
     plt.show()
 
     fig, ax = plt.subplots()
@@ -72,4 +73,5 @@ if __name__ == '__main__':
     ax.set_ylabel('Enthalpy    h    [kJ/kg]')
     ax.legend()
     ax.set_title('Test (Python + CoolProp)')
+    # fig.savefig("img-ExternalMedia-03.png")
     plt.show()
